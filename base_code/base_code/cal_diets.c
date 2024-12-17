@@ -40,7 +40,7 @@ void loadDiets(const char* DIETFILEPATH) {
         	break; //When the array is larger than the maximum size, the data will no longer be read and exit.
 		}
 		strcpy(diet_list[diet_list_size].name, food_name); //Save read food_name by Copying String Function
-        diet_list[diet_list_size].calories = calories; //Save read calorie 
+        diet_list[diet_list_size].calories = calories_intake; //Save read calorie 
         diet_list_size++;
     }
     fclose(file); //Close the file
