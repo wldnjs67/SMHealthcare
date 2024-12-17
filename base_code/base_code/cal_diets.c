@@ -91,8 +91,8 @@ void inputDiet(HealthData* health_data) {
     
 	// ToCode: to enter the total calories intake in the health data
     health_data->total_calories += diet_list[choice - 1].calories;
-    //health_date->total_calories: Store the total number of calories that the user has consumed so far within the structure
-    //+= calculation: Update by adding calories from your chosen diet to the total calories saved to date
+    //total_calories: Stores the total number of calories that the user has consumed so far within the structure
+    //+= operation: Updates by adding the calories from the selected diet to the total calories saved to date
     
 	printf("You have chosen %s. Total calories intake is now %d kcal.\n", health_data->last_diet.name, health_data->total_calories);
     //Outputs the name of the diet you have selected and the total calories consumed so far.
