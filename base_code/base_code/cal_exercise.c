@@ -98,11 +98,13 @@ void inputExercise(HealthData* health_data) {
     // ToCode: to enter the selected exercise and total calcories burned in the health data
     int burned_calories = exercise_list[choice - 1].calories * duration;
     
-    strcpy(health_data->last_exercise.name, exercise_list[choice - 1].name);
+    strcpy(health_data->last_exercise.name, exercise_list[choice - 1].name); //Copy the selected exercise's name to last_exercise.name
+    
     //health_data->last_exercise.name => structure pointer->member(name)
     //exercise_list[choice-1].name: Exercise name that the user chose
     
-    health_data->last_exercise.calories = burned_calories; //Copy the selected Exercise's calories to last_exercise.calories
+    health_data->last_exercise.calories = burned_calories; //Copy the selected exercise's calories to last_exercise.calories
+    
     //health_data->last_exercise.calories => structure pointer->member(calories)
     //exercise_list[choice-1].calories: Exercise calories that the user chose
 
