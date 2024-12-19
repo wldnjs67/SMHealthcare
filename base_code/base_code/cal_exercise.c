@@ -34,7 +34,7 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     }
 
     // ToCode: to read a list of the exercises from the given file
-    while (fscanf(file, "%s %d", exercise_name, &calories_burned_per_minute==2) { //Successful reading of both data results in ==2 condition and a repeat statement is executed
+    while (fscanf(file, "%s %d", exercise_name, &calories_burned_per_minute)==2) { //Successful reading of both data results in ==2 condition and a repeat statement is executed
 
         if (exercise_list_size >= MAX_EXERCISES){
         	break; //When the array is larger than the maximum size, the data will no longer be read and exit.
