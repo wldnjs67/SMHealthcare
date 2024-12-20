@@ -25,11 +25,12 @@
 */
 
 void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
-	int i;
+	int i; //To declare variable i [for statement]
+	
     FILE* file = fopen(HEALTHFILEPATH, "w"); // Pointer to open a file in writing mode
     if (file == NULL) { // If the file does not exist or the path is invalid, outputs ERROR message
         printf("There is no file for health data.\n");
-        return;
+        return; // If the code continues to run while the file cannot be opened, a runtime error occurs. So, requiring termination of the function execution.
     }
 
     // ToCode: to save the chosen exercise and total calories burned 
@@ -68,8 +69,8 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 */
 
 void printHealthData(const HealthData* health_data) {
-	int i;
-	int remaining_calories = health_data->total_calories_intake - BASAL_METABOLIC_RATE- health_data->total_calories_burned; //To declare remaining_calories calculated from the formula
+	int i; //To declare variable i [for statement]
+	int remaining_calories = health_data->total_calories_intake - BASAL_METABOLIC_RATE- health_data->total_calories_burned; //To declare remaining_calories calculated from the formula.
 	
 	// ToCode: to print out the saved history of exercises
 	printf("=========================== History of Exercise =======================\n");
@@ -106,16 +107,18 @@ void printHealthData(const HealthData* health_data) {
     {
     	printf("You have consumed all your calories for today!\n"); //Recommendations 
 	}
+	
     else if (remaining_calories<0)  // If remaining_calories are under zero
     {
     	printf("[WARNING] Too few calories!\n"); // Warning message
-    	if (health_data->total_calories_intake == DAILY_CALORIE_GOAL) // If the calories consumed have reached the recommended daily calories
+    	if (health_data->total_calories_intake == DAILY_CALORIE_GOAL) // If the calorie intake have reached the recommended daily calories
     	   printf("Your total calorie intake for today has reached your goal!\n");
-    	else if (health_data->total_calories_intake < DAILY_CALORIE_GOAL) // If the calories consumed are under the recommended daily calories
+    	else if (health_data->total_calories_intake < DAILY_CALORIE_GOAL) // If the calorie intake are under the recommended daily calories
            printf("Your total calorie intake for today has not reached your goal, remember to eat more!!\n"); // Recommend for user to eat more 
 		else // If the calories consumed are over the recommended daily calories
 		   printf("You have eaten more calories than planned today, but you have exercised too much!\n"); // Recommend for user to exercise more 
 	}
+	
 	else  // If remaining_calories are over zero
 	{
 		printf("Please exercise for your health!\n"); //Recommendations 
@@ -124,5 +127,6 @@ void printHealthData(const HealthData* health_data) {
     	else if (health_data->total_calories_intake < DAILY_CALORIE_GOAL) // If the calories consumed are under the recommended daily calories
         printf("Your total calorie intake for today has not reached your goal, remember to eat more!!\n"); // Recommend for user to eat more
 	}
+	
 	 printf("=======================================================================\n");
 }

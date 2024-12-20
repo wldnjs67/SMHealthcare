@@ -30,7 +30,7 @@ void loadExercises(const char* EXERCISEFILEPATH) {
     FILE *file = fopen(EXERCISEFILEPATH, "r"); // Pointer to open a file in read mode
     if (file == NULL) { // If the file does not exist or the path is invalid, outputs ERROR message
         printf("There is no file for exercises! \n");
-        return;
+        return; //If the code continues to run while the file cannot be opened, a runtime error occurs. So, requiring termination of the function execution.
     }
     
     // To declare variables
@@ -44,8 +44,9 @@ void loadExercises(const char* EXERCISEFILEPATH) {
         	break; // When the array is larger than the maximum size, the data will no longer be read and exit.
 		}
 		strcpy(exercise_list[exercise_list_size].exercise_name, exercise_name); // Save read exercise_name by Copying String Function
-        exercise_list[exercise_list_size].calories_burned_per_minute = calories_burned_per_minute; // Save read calories 
-        exercise_list_size++;
+		// Pointers approaching the next empty space in an array that stores the name of exercise within the exercise structure
+        exercise_list[exercise_list_size].calories_burned_per_minute = calories_burned_per_minute; // Save read calories burned per minute to member of the exercise structure
+        exercise_list_size++; // Increase exercise_list_size 
     }
 
     fclose(file); // Close the file
@@ -79,15 +80,15 @@ void inputExercise(HealthData* health_data) {
  	printf("Choose a number for exercise selection (Choose Number 0 to Exit): "); //Outputs a comment that allows the user to choose the type of exercise
 	scanf("%d", &choice);  
     
-	if (choice == 0) { // If the user wants to exit, she must press 0.
+	if (choice == 0) { // If the user wants to exit, she must enter 0.
         printf("Exit exercise selection.\n");
-        return;
+        return; // Requiring termination of the function execution.
     }
     
     if (choice < 1 || choice > exercise_list_size) { // If the user enters the wrong number, an ERROR message is output.
         printf("[Error] Invalid option. \n");
         printf("Please try again! \n");
-        return;
+        return; // Requiring termination of the function execution.
 	}
 	
     // To enter the duration of the exercise
@@ -96,7 +97,7 @@ void inputExercise(HealthData* health_data) {
     
     if (duration <= 0) { // If the user wrote duration in negative numbers, an ERROR message is output.
         printf("[Error] Duration must be greater than 0.\n");
-        return;
+        return; // Requiring termination of the function execution.
     }
     
     // ToCode: to enter the selected exercise and total calcories burned in the health data
@@ -105,7 +106,10 @@ void inputExercise(HealthData* health_data) {
     
     strcpy(health_data->exercises[health_data->exercise_count].exercise_name, exercise_list[choice - 1].exercise_name); 
     // Copy the name of the selected exercise from exercise_list to the next available slot in health_data->exercises
-    // health_data->exercises[health_data->exercise_count].exercise_name => structure pointer->member(name)
+    
+    // Access the exercise_name of (the exercise_count)th element in the exercise array of health_data structure
+    // Pointers approaching the next empty space in an array that stores the name of exercise within the HealthData structure
+    
     // exercise_list[choice-1].name: Exercise name that the user chose
     
     health_data->exercises[health_data->exercise_count].calories_burned_per_minute = burned_calories; 

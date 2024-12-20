@@ -31,17 +31,17 @@ int main() {
     do {
 			printf("\n=======================================================================\n");
         	printf("[Healthcare Management Systems] \n");
-        	printf("1. Exercise \n");
-        	printf("2. Diet \n");
-        	printf("3. Show logged information \n");
-        	printf("4. Exit \n");
-        	printf("Select the desired number: ");
+        	printf("1. Exercise \n"); // Exercise selection
+        	printf("2. Diet \n"); // Diet selection
+        	printf("3. Show logged information \n"); // Check the accumulated information about exercises and diets
+        	printf("4. Exit \n"); // exit the program
+        	printf("Select the desired number: "); // User's choice
         	scanf("%d", &choice);
         	printf("=======================================================================\n");
         
         
 		// ToCode: to run the sysmtem based on the user's choice
-        switch (choice) {
+        switch (choice) { // Cases that depend on the number entered by the user
             case 1: // If the user chose number 1 (Exercise)
             	inputExercise(&health_data); 
             	//Prompt the user to select an exercise, record the duration, and update health_data accordingly.
@@ -68,15 +68,19 @@ int main() {
     			printf("=======================================================================\n");
                 break; // Exit the loop
                 
-            default:
+            default: //if the user entered wrong number (Except 1~4), an ERROR message is output.
                 printf("[Error] Invalid option. \n");
-                printf("Please try again! \n");
+                printf("Please try again! \n"); 
         }
-        if (health_data.total_calories_intake - 1300 - health_data.total_calories_burned == 0){
+        
+        if (health_data.total_calories_intake - 1300 - health_data.total_calories_burned == 0)
+		{
             printf("You have consumed all your calories for today! \n");
-            break; // Exit the loop if the calorie goal is achieved
+            break; // Exit the loop if the calorie goal is achieved. The program will be terminated.
 		} 
+		
     } while (choice!=4); // If the user chose number 1 or 2 or 3, then a repeat statement is executed. 
+    //If the user chose number 4, The program will be terminated immediately. (without running a repeat statement)
 
     return 0;
 }
