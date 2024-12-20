@@ -1,15 +1,15 @@
 [Exercises] 
-Exercise: riding, Calories burned: 300 kcal
 Exercise: swimming, Calories burned: 720 kcal
-Exercise: riding, Calories burned: 100 kcal
+Exercise: running, Calories burned: 495 kcal
+Exercise: riding, Calories burned: 235 kcal
 
 [Diets] 
 Food: chicken, Calories intake: 925 kcal
-Food: tteokbokki, Calories intake: 615 kcal
-Food: bread, Calories intake: 680 kcal
+Food: pizza, Calories intake: 900 kcal
+Food: chicken, Calories intake: 925 kcal
 
 [Total] 
 Basal Metabolic Rate: 1300 kcal
-Total calories burned: 1120 kcal
-Total calories intake: 2220 kcal
-The remaining calories: -200 kcal
+Total calories burned: 1450 kcal
+Total calories intake: 2750 kcal
+The remaining calories: 0 kcal
