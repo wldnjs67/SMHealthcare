@@ -43,7 +43,7 @@ void loadDiets(const char* DIETFILEPATH) {
         	break; //When the array is larger than the maximum size, the data will no longer be read and exit.
 		}
 		strcpy(diet_list[diet_list_size].food_name, food_name); //Save read food_name by Copying String Function
-        diet_list[diet_list_size].calories_intake = calories_intake; //Save read calorie 
+        diet_list[diet_list_size].calories_intake = calories_intake; //Save read calories_intake
         diet_list_size++;
     }
     fclose(file); //Close the file
@@ -65,7 +65,7 @@ void inputDiet(HealthData* health_data) {
     printf("The list of diets:\n");
     
     for (i = 0; i < diet_list_size; i++) {
-        printf("%d. %s (%d kcal)\n", i+1, diet_list[i].food_name, diet_list[i].calories_intake);
+        printf("%d. %s (%d kcal)\n", i+1, diet_list[i].food_name, diet_list[i].calories_intake); //Outputs diet List (Name, Calories) 
     }
     printf("0. Exit\n"); // Exit option 
 
@@ -85,19 +85,19 @@ void inputDiet(HealthData* health_data) {
 	}
     // ToCode: to enter the selected diet in the health data
     strcpy(health_data->diet[health_data->diet_count].food_name, diet_list[choice - 1].food_name);//Copy the selected diet's name to last_diet.name
-    //health_data->last_diet.name => structure pointer->member(name)
-    //diet_list[choice-1].name: Diet name that the user chose
+    //health_data->diet[health_data->diet_count].food_name => structure pointer->member(name)
+    //diet_list[choice-1].food_name: Diet name that the user chose
     
     health_data->diet[health_data->diet_count].calories_intake = diet_list[choice - 1].calories_intake; //Copy the selected diet's calories to last_diet.calories
-    //health_data->last_diet.calories => structure pointer->member(calories)
-    //diet_list[choice-1].calories: Diet calories that the user chose
+    //health_data->diet[health_data->diet_count].calories_intake => structure pointer->member(calories)
+    //diet_list[choice-1].calories_intake: Diet calories that the user chose
     
     health_data->diet_count++;
-
+    // Increment the diet_count to track the next available index for storing a new diet record
 
 	// ToCode: to enter the total calories intake in the health data
     health_data->total_calories_intake += diet_list[choice - 1].calories_intake;
-    //total_calories: Stores the total number of calories that the user has consumed so far within the structure
+    //total_calories_intake: Stores the total number of calories that the user has consumed so far within the structure
     //+= operation: Updates by adding the calories from the selected diet to the total calories saved to date
     
 	printf("You have chosen %s. Total calories intake is now %d kcal.\n",  diet_list[choice - 1].food_name, health_data->total_calories_intake);

@@ -49,12 +49,12 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     int remaining_calories = health_data->total_calories_intake - 1300 - health_data->total_calories_burned;
     // ToCode: to save the total remaining calrories
     fprintf(file, "\n[Total] \n");
-    fprintf(file, "Basal Metabolic Rate: 1300 kcal\n"); //Fix the basic metabolism at 1300 kcal and output it to the file.
+    fprintf(file, "Basal Metabolic Rate: 1300 kcal\n"); //Outputs basal metabolic rate values to the file.
     fprintf(file, "Total calories burned: %d kcal\n", health_data->total_calories_burned); //Outputs the total burned calorie values to the file.
     fprintf(file, "Total calories intake: %d kcal\n", health_data->total_calories_intake); //Outputs the total calorie intake values to the file.
     fprintf(file, "The remaining calories: %d kcal\n", remaining_calories);// Outputs the remaining calorie values to the file.
     
-    fclose(file);
+    fclose(file); //Close the file
 }
 
 /*
@@ -69,11 +69,12 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 
 void printHealthData(const HealthData* health_data) {
 	int i;
-	int remaining_calories = health_data->total_calories_intake - BASAL_METABOLIC_RATE- health_data->total_calories_burned;
+	int remaining_calories = health_data->total_calories_intake - BASAL_METABOLIC_RATE- health_data->total_calories_burned; //To declare remaining_calories calculated from the formula
+	
 	// ToCode: to print out the saved history of exercises
 	printf("=========================== History of Exercise =======================\n");
     for (i=0;i<health_data->exercise_count; i++) {
-    	printf("Exercise: %s, Calories burned: %d kcal\n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute);
+    	printf("Exercise: %s, Calories burned: %d kcal\n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute); 
 	}
   
     printf("=======================================================================\n");

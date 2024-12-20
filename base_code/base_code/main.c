@@ -43,21 +43,27 @@ int main() {
 		// ToCode: to run the sysmtem based on the user's choice
         switch (choice) {
             case 1:
-            	inputExercise(&health_data);
+            	inputExercise(&health_data); 
+            	//Prompt the user to select an exercise, record the duration, and update health_data accordingly.
             	saveData(HEALTHFILEPATH, &health_data);
+            	//Save the updated health data to the text file
                 break;
                 
             case 2:
             	inputDiet(&health_data);
+            	//Prompt the user to select a diet and update health_data with the selected diet details.
             	saveData(HEALTHFILEPATH, &health_data);
+            	//Save the updated health data to the text file
                 break;
                 
             case 3:
             	printHealthData(&health_data);
+            	//Outputs the current health data, including exercise, diet, and total calorie information.
                 break;
                 
             case 4:
             	saveData(HEALTHFILEPATH, &health_data);
+            	//Save the final health data to the text file
     			printf("Exit the system.\n");
     			printf("=======================================================================\n");
                 break;
@@ -68,9 +74,9 @@ int main() {
         }
         if (health_data.total_calories_intake - 1300 - health_data.total_calories_burned == 0){
             printf("You have consumed all your calories for today! \n");
-            break;
+            break; //Exit the loop if the calorie goal is achieved
 		} 
-    } while (choice!=4);
+    } while (choice!=4); //if user chose number 1,2,3, then a repeat statement is executed
 
     return 0;
 }
