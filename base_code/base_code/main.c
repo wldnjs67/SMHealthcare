@@ -73,7 +73,7 @@ int main() {
                 printf("Please try again! \n"); 
         }
         
-        if (health_data.total_calories_intake - 1300 - health_data.total_calories_burned == 0)
+        if (health_data.total_calories_intake - BASAL_METABOLIC_RATE - health_data.total_calories_burned == 0)
 		{
             printf("You have consumed all your calories for today! \n");
             break; // Exit the loop if the calorie goal is achieved. The program will be terminated.

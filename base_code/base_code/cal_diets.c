@@ -28,6 +28,7 @@ static int diet_list_size = 0;
 
 void loadDiets(const char* DIETFILEPATH) {
     FILE *file = fopen(DIETFILEPATH, "r"); // Pointer to open a file in read mode
+    
     if (file == NULL) { // If the file does not exist or the path is invalid, outputs ERROR message
         printf("There is no file for diets! \n");
         return; //If the code continues to run while the file cannot be opened, a runtime error occurs. So, requiring termination of the function execution.

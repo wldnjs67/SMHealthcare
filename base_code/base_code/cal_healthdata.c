@@ -28,6 +28,7 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 	int i; //To declare variable i [for statement]
 	
     FILE* file = fopen(HEALTHFILEPATH, "w"); // Pointer to open a file in writing mode
+    
     if (file == NULL) { // If the file does not exist or the path is invalid, outputs ERROR message
         printf("There is no file for health data.\n");
         return; // If the code continues to run while the file cannot be opened, a runtime error occurs. So, requiring termination of the function execution.
@@ -35,6 +36,7 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 
     // ToCode: to save the chosen exercise and total calories burned 
     fprintf(file, "[Exercises] \n"); // Print [Exercises] to the file.
+    
     for (i=0;i<health_data->exercise_count; i++) { // Repeat as many times as the number of exercise records stored in the structure.
     	fprintf(file, "Exercise: %s, Calories burned: %d kcal\n", health_data->exercises[i].exercise_name, health_data->exercises[i].calories_burned_per_minute); 
     	// Print the name of each exercise and the calories burned per minute to the file.
@@ -42,12 +44,14 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
     
     // ToCode: to save the chosen diet and total calories intake 
     fprintf(file, "\n[Diets] \n"); // Print [Diets] to the file.
+    
     for (i=0;i<health_data->diet_count; i++) { // Repeat as many times as the number of diets records stored in the structure.
     	fprintf(file, "Food: %s, Calories intake: %d kcal\n", health_data->diet[i].food_name, health_data->diet[i].calories_intake);
     	// Print the name of each food and the calories intake in the file.
 	}
 
     int remaining_calories = health_data->total_calories_intake - BASAL_METABOLIC_RATE - health_data->total_calories_burned;
+    
     // ToCode: to save the total remaining calrories
     fprintf(file, "\n[Total] \n");
     fprintf(file, "Basal Metabolic Rate: 1300 kcal\n"); // Outputs basal metabolic rate values (1300 kcal) to the text file.
@@ -70,7 +74,7 @@ void saveData(const char* HEALTHFILEPATH, const HealthData* health_data) {
 
 void printHealthData(const HealthData* health_data) {
 	int i; //To declare variable i [for statement]
-	int remaining_calories = health_data->total_calories_intake - BASAL_METABOLIC_RATE- health_data->total_calories_burned; //To declare remaining_calories calculated from the formula.
+	int remaining_calories = health_data->total_calories_intake - BASAL_METABOLIC_RATE - health_data->total_calories_burned; //To declare remaining_calories calculated from the formula.
 	
 	// ToCode: to print out the saved history of exercises
 	printf("=========================== History of Exercise =======================\n");
